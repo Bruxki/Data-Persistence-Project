@@ -96,8 +96,11 @@ public class MainManager : MonoBehaviour
         m_GameOver = true;
         GameOverText.SetActive(true);
 
-        MenuManager.Instance.HighScore = highScoreNum;
-        MenuManager.Instance.Name = highScoreName;
-        MenuManager.Instance.SaveNameScore();
+        if (highScoreNum < m_Points)
+        {
+            MenuManager.Instance.Name = MenuManager.Instance.currentName;
+            MenuManager.Instance.HighScore = m_Points;
+            MenuManager.Instance.SaveNameScore();
+        }     
     }
 }

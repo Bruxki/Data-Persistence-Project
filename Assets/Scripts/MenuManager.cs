@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
 
+    public string currentName;
     public string Name;
     public int HighScore;
 
@@ -23,18 +24,6 @@ public class MenuManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    //methods for updating the name and the score
-    public void NewNameCreated (string name)
-    {
-        MenuManager.Instance.Name = name;
-        
-    }
-
-    public void UpdateHighScore(int highScore)
-    {
-        MenuManager.Instance.HighScore = highScore;
-    }
-
 
     //save data class (put everything together)
     [System.Serializable]
@@ -59,7 +48,7 @@ public class MenuManager : MonoBehaviour
     //extracting the data back into the ol' mighty singleton
     public void LoadNameScore()
     {
-        string path = Application.persistentDataPath + "savefile.json";
+        string path = Application.persistentDataPath + "/savefile.json";
 
         if (File.Exists(path))
         {
