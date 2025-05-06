@@ -27,6 +27,7 @@ public class MenuManager : MonoBehaviour
     public void NewNameCreated (string name)
     {
         MenuManager.Instance.Name = name;
+        
     }
 
     public void UpdateHighScore(int highScore)
@@ -70,24 +71,5 @@ public class MenuManager : MonoBehaviour
             HighScore = data.highScore;
 
         }
-    }
-
-
-
-
-
-    //scene management part (should've been a separate script)
-    public void StartGame()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void QuitGame()
-    {
-#if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
-#else
-        Application.Quit();
-#endif
     }
 }
